@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     stages {
-         stage('Gradle Build') {
+         stage('Gradle Compile') {
             steps{
             sh 'gradle --version'
+            echo 'Building'
             sh 'chmod +x gradlew'
-            sh 'gradle build --info'
+            sh 'gradle gradle build -x test jar'
             }
         }
         stage('Test') {
@@ -15,11 +16,10 @@ pipeline {
                         sh 'gradle test --info'
                     }
          }
-        stage('Deploy') {
+        stage('Deploy Jar') {
                     steps {
                         echo 'Deploying'
                         sh 'gradle jar --info'
-                        cp /var/lib/jenkins/workspace/jenkins_master/build/libs/*.jar /var/builds
                     }
          }
     }

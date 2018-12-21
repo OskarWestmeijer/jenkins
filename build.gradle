@@ -1,3 +1,5 @@
+import java.awt.Desktop
+
 plugins {
     id 'java'
 }
@@ -23,4 +25,9 @@ jar {
         )
     }
     baseName 'Jenkins'
+    if (org.gradle.internal.os.OperatingSystem.current().isUnix()) {
+        destinationDir = file('/var/builds')
+    } else if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+        destinationDir = file('C:\\Users\\oskar\\Desktop\\Builds')
+    }
 }
