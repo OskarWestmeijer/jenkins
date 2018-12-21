@@ -7,7 +7,7 @@ pipeline {
             sh 'gradle --version'
             echo 'Building'
             sh 'chmod +x gradlew'
-            sh 'gradle gradle build -x test jar'
+            sh 'gradle build -x test jar'
             }
         }
         stage('Test') {
