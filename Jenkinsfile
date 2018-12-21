@@ -4,22 +4,24 @@ pipeline {
     stages {
          stage('Gradle Compile') {
             steps{
-            sh 'gradle --version'
-            echo 'Building'
             sh 'chmod +x gradlew'
-            sh 'gradle build -x test jar'
+            echo 'Clean build directory'
+            sh 'gradle clean'
+
+            echo 'compile classes'
+            sh 'gradle classes'
             }
         }
         stage('Test') {
                     steps {
                         echo 'Testing'
-                        sh 'gradle test --info'
+                        sh 'gradle test'
                     }
          }
         stage('Deploy Jar') {
                     steps {
-                        echo 'Deploying'
-                        sh 'gradle jar --info'
+                        echo 'Deploying Jar'
+                        sh 'gradle jar'
                     }
          }
     }
