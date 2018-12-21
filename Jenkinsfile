@@ -19,6 +19,7 @@ pipeline {
                     steps {
                         echo 'Deploying'
                         sh 'gradle jar --info'
+                        cp /var/lib/jenkins/workspace/jenkins_master/build/libs/*.jar /var/builds
                     }
          }
     }
