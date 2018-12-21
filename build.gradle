@@ -23,5 +23,4 @@ jar {
         )
     }
     baseName 'Jenkins'
-    destinationDir = file('C:\\Users\\Oskar\\Desktop\\Builds')
 }
