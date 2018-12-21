@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy Jar') {
                     steps {
                         echo 'Deploying Jar'
-                        sh 'gradle assemble --debug'
+                        sh 'gradle assemble --stacktrace'
                     }
          }
     }
